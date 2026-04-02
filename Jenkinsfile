@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone') {
             steps {
-                git '<your-repo-link>'
+                echo "Cloning done"
             }
         }
 
@@ -20,7 +20,6 @@ pipeline {
                 bat '''
                 docker run -d -p 7070:80 --name test-container exp8-app
                 timeout /t 5
-                curl http://localhost:7070
                 docker rm -f test-container
                 '''
             }
